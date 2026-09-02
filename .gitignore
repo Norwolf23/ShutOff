@@ -1,0 +1,6 @@
+build/
+*.xcarchive
+DerivedData/
+xcuserdata/
+.DS_Store
+icon_1024.png

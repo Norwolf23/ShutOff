@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleName</key><string>ShutOff</string>
+	<key>CFBundleDisplayName</key><string>ShutOff</string>
+	<key>CFBundleIdentifier</key><string>studio.nickson.shutoff</string>
+	<key>CFBundleExecutable</key><string>ShutOff</string>
+	<key>CFBundlePackageType</key><string>APPL</string>
+	<key>CFBundleVersion</key><string>1</string>
+	<key>CFBundleShortVersionString</key><string>1.0</string>
+	<key>LSMinimumSystemVersion</key><string>13.0</string>
+	<key>NSHighResolutionCapable</key><true/>
+	<key>LSApplicationCategoryType</key><string>public.app-category.utilities</string>
+	<key>ITSAppUsesNonExemptEncryption</key><false/>
+	<key>NSHumanReadableCopyright</key><string>© 2026 Nickson Studio</string>
+	<key>NSAppleEventsUsageDescription</key><string>ShutOff asks System Events to put the Mac to sleep when the timer ends.</string>
+</dict>
+</plist>
