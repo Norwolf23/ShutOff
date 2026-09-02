@@ -1,4 +1,5 @@
 import SwiftUI
+import IOKit.pwr_mgt
 
 @main
 struct ShutOffApp: App {
@@ -137,10 +138,16 @@ struct ContentView: View {
     }
 
     func sleepMac() {
-        let p = Process()
-        p.executableURL = URL(fileURLWithPath: "/usr/bin/pmset")
-        p.arguments = ["sleepnow"]
-        try? p.run()
+        // ponytail: two paths, no pmset. IOKit sleep is a direct kernel call (works when
+        // the sandbox allows the IOPM port); if it fails, ask System Events via Apple Events,
+        // which the sandbox permits through the apple-events entitlements + usage description.
+        let port = IOPMFindPowerManagement(kIOMainPortDefault)
+        if port != 0 {
+            let r = IOPMSleepSystem(port)
+            IOServiceClose(port)
+            if r == kIOReturnSuccess { return }
+        }
+        NSAppleScript(source: "tell application \"System Events\" to sleep")?.executeAndReturnError(nil)
     }
 }
 

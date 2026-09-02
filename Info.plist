@@ -7,10 +7,13 @@
 	<key>CFBundleIdentifier</key><string>studio.nickson.shutoff</string>
 	<key>CFBundleExecutable</key><string>ShutOff</string>
 	<key>CFBundlePackageType</key><string>APPL</string>
-	<key>CFBundleIconFile</key><string>AppIcon</string>
 	<key>CFBundleVersion</key><string>1</string>
 	<key>CFBundleShortVersionString</key><string>1.0</string>
 	<key>LSMinimumSystemVersion</key><string>13.0</string>
 	<key>NSHighResolutionCapable</key><true/>
+	<key>LSApplicationCategoryType</key><string>public.app-category.utilities</string>
+	<key>ITSAppUsesNonExemptEncryption</key><false/>
+	<key>NSHumanReadableCopyright</key><string>© 2026 Nickson Studio</string>
+	<key>NSAppleEventsUsageDescription</key><string>ShutOff asks System Events to put the Mac to sleep when the timer ends.</string>
 </dict>
 </plist>
