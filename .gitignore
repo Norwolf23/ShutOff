@@ -1,5 +1,6 @@
 build/
-AppIcon.iconset/
-icon_1024.png
-AppIcon.icns
+*.xcarchive
+DerivedData/
+xcuserdata/
 .DS_Store
+icon_1024.png

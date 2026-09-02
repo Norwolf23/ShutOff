@@ -8,21 +8,19 @@ Made for falling asleep to YouTube or a movie without it playing all night.
 
 - Presets (15m – 2h) or any custom duration (5–480 min)
 - Countdown ring with **+10 min** and **Cancel**
-- Full system sleep via `pmset sleepnow` — not just display off, so audio stops too
+- Full system sleep (IOKit, falling back to System Events) — not just display off, so audio stops too
 - Timer tracks a target end time and holds an App Nap exemption, so it can't drift or stall in the background
-- Single Swift file, no dependencies, no Xcode project
+- Single Swift file, no dependencies
 
 ## Build & install
 
-Requires macOS 13+ and Xcode command line tools (`xcode-select --install`).
+Requires macOS 13+, Xcode, and [xcodegen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`).
 
 ```sh
-./build.sh
-cp -R build/ShutOff.app /Applications/
-open /Applications/ShutOff.app
+xcodegen generate && xcodebuild -scheme ShutOff -configuration Release build
 ```
 
-`build.sh` renders the icon (`makeicon.swift`), compiles `main.swift` with `swiftc`, assembles the bundle, and ad-hoc signs it. Takes a couple of seconds.
+The app is sandboxed and hardened-runtime for the Mac App Store; `makeicon.swift` renders the source icon behind `Assets.xcassets`.
 
 ## License
 
