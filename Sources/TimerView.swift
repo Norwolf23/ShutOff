@@ -48,10 +48,8 @@ struct TimerView: View {
     var picker: some View {
         VStack(alignment: .leading, spacing: 20) {
             Button { start(minutes: customMinutes) } label: {
-                Image(systemName: "moon")
-                    .font(.system(size: 88, weight: .ultraLight))
-                    .foregroundStyle(Theme.moon)
-                    .shadow(color: Theme.moon.opacity(0.45), radius: 18)
+                MoonView(phase: 0.62)
+                    .frame(width: 150)
                     .frame(maxWidth: .infinity)
                     .padding(.bottom, 12)
                     .contentShape(Rectangle())
