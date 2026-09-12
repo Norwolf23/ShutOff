@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		3BD1D36B7D5CB9C5EB7C18CC /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FBBA2D83CC7A273D094AC0 /* TimerView.swift */; };
 		3FAC762C42ACC7C0539DD6E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F61C5782523A0AD95D9A31 /* Assets.xcassets */; };
+		414D4F634A74BD2B22188FF6 /* MoonPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA62F07731A320137348D6C /* MoonPhase.swift */; };
 		70ABA3D86E4FCED562434E34 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FBBA2D83CC7A273D094AC0 /* TimerView.swift */; };
 		7A06C676B0DBB36EF33F3876 /* Ender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */; };
+		B89894972C5946BD6BF29DF0 /* MoonPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA62F07731A320137348D6C /* MoonPhase.swift */; };
 		C152EDE8579A8591A80324FE /* ShutOffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */; };
 		ED006628CF63C04562899BA3 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */; };
 		EDB4B1CCDA4F45375F4F9A73 /* ShutOffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */; };
@@ -19,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		46FBBA2D83CC7A273D094AC0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		9EA62F07731A320137348D6C /* MoonPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhase.swift; sourceTree = "<group>"; };
 		A6F61C5782523A0AD95D9A31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEEBF6C8698D306D8CB9B7EA /* ShutOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 			isa = PBXGroup;
 			children = (
 				DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */,
+				9EA62F07731A320137348D6C /* MoonPhase.swift */,
 				ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */,
 				46FBBA2D83CC7A273D094AC0 /* TimerView.swift */,
 			);
@@ -160,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A06C676B0DBB36EF33F3876 /* Ender.swift in Sources */,
+				B89894972C5946BD6BF29DF0 /* MoonPhase.swift in Sources */,
 				EDB4B1CCDA4F45375F4F9A73 /* ShutOffApp.swift in Sources */,
 				70ABA3D86E4FCED562434E34 /* TimerView.swift in Sources */,
 			);
@@ -170,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F826A50B92CDB3E29D5A0320 /* Ender.swift in Sources */,
+				414D4F634A74BD2B22188FF6 /* MoonPhase.swift in Sources */,
 				C152EDE8579A8591A80324FE /* ShutOffApp.swift in Sources */,
 				3BD1D36B7D5CB9C5EB7C18CC /* TimerView.swift in Sources */,
 			);

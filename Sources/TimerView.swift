@@ -37,13 +37,7 @@ struct TimerView: View {
     }
 
     var header: some View {
-        HStack(spacing: 10) {
-            if endDate != nil {
-                Image(systemName: "moon")
-                    .font(.system(size: 15, weight: .ultraLight))
-                    .foregroundStyle(Theme.moon)
-                    .shadow(color: Theme.moon.opacity(0.6), radius: 6)
-            }
+        HStack {
             Text("ShutOff")
                 .font(.system(size: 15, weight: .light))
                 .tracking(1.5)
@@ -96,25 +90,17 @@ struct TimerView: View {
     }
 
     var countdown: some View {
-        VStack(spacing: 32) {
-            ZStack {
-                Circle().stroke(Theme.rule, lineWidth: 1)
-                Circle()
-                    .trim(from: 0, to: progress)
-                    .stroke(Theme.moon, style: StrokeStyle(lineWidth: 1.5, lineCap: .round))
-                    .shadow(color: Theme.moon.opacity(0.55), radius: 6)
-                    .rotationEffect(.degrees(-90))
-                    .animation(.linear(duration: 0.5), value: progress)
-                VStack(spacing: 6) {
-                    Text(timeString)
-                        .font(.system(size: 46, weight: .ultraLight, design: .monospaced))
-                    Text(Ender.until)
-                        .font(.system(size: 11))
-                        .foregroundStyle(Theme.dim)
-                }
+        VStack(spacing: 28) {
+            MoonView(phase: 1 - progress)
+                .frame(maxWidth: 180)
+                .animation(.linear(duration: 0.5), value: progress)
+            VStack(spacing: 6) {
+                Text(timeString)
+                    .font(.system(size: 46, weight: .ultraLight, design: .monospaced))
+                Text(Ender.until)
+                    .font(.system(size: 11))
+                    .foregroundStyle(Theme.dim)
             }
-            .aspectRatio(1, contentMode: .fit)
-            .frame(maxWidth: 240)
 
             HStack(spacing: 0) {
                 Button("+10 min") {
