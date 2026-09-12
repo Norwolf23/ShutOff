@@ -1,26 +1,31 @@
-# ShutOff 🌙
+# ShutOff
 
-A tiny native macOS sleep timer. Pick a duration, walk away — when the countdown hits zero your Mac goes to sleep. Music and video stop; nothing shuts down. Wake it with any key.
+A tiny native sleep timer for Mac and iPhone. Pick a duration, walk away.
 
-Made for falling asleep to YouTube or a movie without it playing all night.
+- **Mac:** when the countdown hits zero the Mac goes to sleep. Music and video stop; nothing shuts down. Wake it with any key.
+- **iPhone:** iOS won't let an app sleep the phone, so ShutOff stops whatever is playing instead (YouTube, Spotify, podcasts…). It plays silence in the background to keep the timer alive, then takes over the audio session at zero.
+
+Made for falling asleep to a movie without it playing all night.
 
 ## Features
 
 - Presets (15m – 2h) or any custom duration (5–480 min)
 - Countdown ring with **+10 min** and **Cancel**
-- Full system sleep (IOKit, falling back to System Events) — not just display off, so audio stops too
-- Timer tracks a target end time and holds an App Nap exemption, so it can't drift or stall in the background
-- Single Swift file, no dependencies
+- Mac: full system sleep (IOKit, falling back to System Events), App Nap exemption so the timer can't stall
+- One shared SwiftUI codebase (`Sources/`), platform differences confined to `Ender.swift`
+- No dependencies, no accounts, no network
 
-## Build & install
+## Build
 
-Requires macOS 13+, Xcode, and [xcodegen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`).
+Requires Xcode and [xcodegen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`). macOS 13+ / iOS 17+.
 
 ```sh
-xcodegen generate && xcodebuild -scheme ShutOff -configuration Release build
+xcodegen generate
+xcodebuild -scheme ShutOff build                                                   # Mac
+xcodebuild -scheme ShutOff-iOS -destination 'platform=iOS Simulator,name=iPhone 17' build
 ```
 
-The app is sandboxed and hardened-runtime for the Mac App Store; `makeicon.swift` renders the source icon behind `Assets.xcassets`.
+Both targets are sandboxed / hardened-runtime for the App Store and share the bundle ID `studio.nickson.shutoff` (one listing). `swift makeicon.swift` renders the icons behind the two asset catalogs.
 
 ## License
 
