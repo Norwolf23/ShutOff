@@ -23,7 +23,7 @@ struct TimerView: View {
             .frame(maxWidth: 360)
         }
         #if os(macOS)
-        .frame(width: 300, height: 500)
+        .frame(minWidth: 300, minHeight: 500)
         #endif
         .foregroundStyle(Theme.text)
         .preferredColorScheme(.dark)
