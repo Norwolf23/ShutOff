@@ -11,16 +11,21 @@ struct TimerView: View {
     private let tick = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
 
     var body: some View {
-        ZStack {
-            NightSky()
-            VStack(spacing: 0) {
-                header
-                Spacer(minLength: 24)
-                if endDate == nil { picker } else { countdown }
-                Spacer(minLength: 24)
+        GeometryReader { g in
+            // ponytail: one scale factor for everything, 1 at the 300×500 minimum, capped at 2.
+            let s = min(max(min(g.size.width / 300, g.size.height / 500), 1), 2)
+            ZStack {
+                NightSky()
+                VStack(spacing: 0) {
+                    header(s)
+                    Spacer(minLength: 24 * s)
+                    if endDate == nil { picker(s) } else { countdown(s) }
+                    Spacer(minLength: 24 * s)
+                }
+                .padding(28 * s)
+                .frame(maxWidth: 360 * s)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .padding(28)
-            .frame(maxWidth: 360)
         }
         #if os(macOS)
         .frame(minWidth: 300, minHeight: 500)
@@ -36,28 +41,28 @@ struct TimerView: View {
         }
     }
 
-    var header: some View {
+    func header(_ s: CGFloat) -> some View {
         HStack {
             Text("ShutOff")
-                .font(.system(size: 15, weight: .light))
-                .tracking(1.5)
+                .font(.system(size: 15 * s, weight: .light))
+                .tracking(1.5 * s)
             Spacer()
         }
     }
 
-    var picker: some View {
-        VStack(alignment: .leading, spacing: 20) {
+    func picker(_ s: CGFloat) -> some View {
+        VStack(alignment: .leading, spacing: 20 * s) {
             Button { start(minutes: customMinutes) } label: {
                 MoonView(phase: 0.62)
-                    .frame(width: 150)
+                    .frame(width: 150 * s)
                     .frame(maxWidth: .infinity)
-                    .padding(.bottom, 12)
+                    .padding(.bottom, 12 * s)
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
-            .help("Start \(customMinutes) min")
+
             Text(Ender.promise)
-                .font(.system(size: 13, weight: .light))
+                .font(.system(size: 13 * s, weight: .light))
                 .foregroundStyle(Theme.dim)
 
             VStack(spacing: 0) {
@@ -67,7 +72,7 @@ struct TimerView: View {
                         ForEach(0..<3, id: \.self) { col in
                             let m = presets[row * 3 + col]
                             Button(label(m)) { start(minutes: m) }
-                                .buttonStyle(Key())
+                                .buttonStyle(Key(s: s))
                             if col < 2 { vrule }
                         }
                     }
@@ -77,31 +82,31 @@ struct TimerView: View {
             }
 
             HStack(spacing: 0) {
-                Text("Custom").font(.system(size: 13, weight: .light)).foregroundStyle(Theme.dim)
+                Text("Custom").font(.system(size: 13 * s, weight: .light)).foregroundStyle(Theme.dim)
                 Spacer()
-                Button("−") { customMinutes = max(5, customMinutes - 5) }.buttonStyle(Key(small: true))
+                Button("−") { customMinutes = max(5, customMinutes - 5) }.buttonStyle(Key(s: s, small: true))
                 Text("\(customMinutes) min")
-                    .font(.system(size: 13, weight: .light, design: .monospaced))
-                    .frame(width: 64)
-                Button("+") { customMinutes = min(480, customMinutes + 5) }.buttonStyle(Key(small: true))
+                    .font(.system(size: 13 * s, weight: .light, design: .monospaced))
+                    .frame(width: 64 * s)
+                Button("+") { customMinutes = min(480, customMinutes + 5) }.buttonStyle(Key(s: s, small: true))
             }
             Button("Start \(customMinutes) min") { start(minutes: customMinutes) }
-                .buttonStyle(Key(accent: true))
+                .buttonStyle(Key(s: s, accent: true))
                 .overlay(alignment: .top) { hrule }
                 .overlay(alignment: .bottom) { hrule }
         }
     }
 
-    var countdown: some View {
-        VStack(spacing: 28) {
+    func countdown(_ s: CGFloat) -> some View {
+        VStack(spacing: 28 * s) {
             MoonView(phase: 1 - progress)
-                .frame(maxWidth: 180)
+                .frame(maxWidth: 180 * s)
                 .animation(.linear(duration: 0.5), value: progress)
-            VStack(spacing: 6) {
+            VStack(spacing: 6 * s) {
                 Text(timeString)
-                    .font(.system(size: 46, weight: .ultraLight, design: .monospaced))
+                    .font(.system(size: 46 * s, weight: .ultraLight, design: .monospaced))
                 Text(Ender.until)
-                    .font(.system(size: 11))
+                    .font(.system(size: 11 * s))
                     .foregroundStyle(Theme.dim)
             }
 
@@ -110,10 +115,10 @@ struct TimerView: View {
                     endDate = endDate?.addingTimeInterval(600)
                     total += 600
                 }
-                .buttonStyle(Key())
+                .buttonStyle(Key(s: s))
                 vrule
                 Button("Cancel") { stop() }
-                    .buttonStyle(Key())
+                    .buttonStyle(Key(s: s))
             }
             .fixedSize(horizontal: false, vertical: true)
             .overlay(alignment: .top) { hrule }
@@ -151,16 +156,17 @@ struct TimerView: View {
 
 /// Plain text key: no fill, no border. Dividers come from the parent.
 struct Key: ButtonStyle {
+    var s: CGFloat = 1
     var accent = false
     var small = false
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: small ? 16 : 14, weight: .light, design: .monospaced))
+            .font(.system(size: (small ? 16 : 14) * s, weight: .light, design: .monospaced))
             .foregroundStyle(configuration.isPressed || accent ? Theme.moon : Theme.text)
             .opacity(configuration.isPressed ? 0.6 : 1)
             .frame(maxWidth: small ? nil : .infinity)
-            .frame(minWidth: small ? 36 : nil)
-            .padding(.vertical, 13)
+            .frame(minWidth: small ? 36 * s : nil)
+            .padding(.vertical, 13 * s)
             .contentShape(Rectangle())
     }
 }

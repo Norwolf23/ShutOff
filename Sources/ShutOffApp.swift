@@ -9,6 +9,7 @@ struct ShutOffApp: App {
         #if os(macOS)
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentMinSize)
+        .defaultSize(width: 300, height: 500)
         #endif
     }
 }
