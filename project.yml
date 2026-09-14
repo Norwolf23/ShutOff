@@ -7,7 +7,7 @@ targets:
   ShutOff:
     type: application
     platform: macOS
-    sources: [main.swift, Assets.xcassets]
+    sources: [Sources, Assets.xcassets]
     entitlements:
       path: ShutOff.entitlements
       properties:
@@ -24,4 +24,33 @@ targets:
       ENABLE_HARDENED_RUNTIME: YES
       ENABLE_APP_SANDBOX: YES
       ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-      OTHER_SWIFT_FLAGS: -parse-as-library
+      SWIFT_VERSION: "5.0"
+  ShutOff-iOS:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources: [Sources, Assets-iOS.xcassets]
+    info:
+      path: Info-iOS.plist
+      properties:
+        CFBundleDisplayName: ShutOff
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        ITSAppUsesNonExemptEncryption: false
+        NSHumanReadableCopyright: "© 2026 Nickson Studio"
+        UILaunchScreen: {}
+        UIBackgroundModes: [audio]
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+    settings:
+      base:
+        PRODUCT_NAME: ShutOff
+        PRODUCT_BUNDLE_IDENTIFIER: studio.nickson.shutoff
+        DEVELOPMENT_TEAM: 6272CRNH9G
+        CODE_SIGN_STYLE: Automatic
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: 1
+        GENERATE_INFOPLIST_FILE: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SWIFT_VERSION: "5.0"

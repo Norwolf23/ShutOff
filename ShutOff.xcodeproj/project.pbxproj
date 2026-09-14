@@ -7,22 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BD1D36B7D5CB9C5EB7C18CC /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FBBA2D83CC7A273D094AC0 /* TimerView.swift */; };
 		3FAC762C42ACC7C0539DD6E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F61C5782523A0AD95D9A31 /* Assets.xcassets */; };
-		6BC55AD8750B8B531B155564 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E60B63ED09A3B592969582 /* main.swift */; };
+		414D4F634A74BD2B22188FF6 /* MoonPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA62F07731A320137348D6C /* MoonPhase.swift */; };
+		70ABA3D86E4FCED562434E34 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FBBA2D83CC7A273D094AC0 /* TimerView.swift */; };
+		7A06C676B0DBB36EF33F3876 /* Ender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */; };
+		B89894972C5946BD6BF29DF0 /* MoonPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA62F07731A320137348D6C /* MoonPhase.swift */; };
+		C152EDE8579A8591A80324FE /* ShutOffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */; };
+		ED006628CF63C04562899BA3 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */; };
+		EDB4B1CCDA4F45375F4F9A73 /* ShutOffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */; };
+		F826A50B92CDB3E29D5A0320 /* Ender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		72E60B63ED09A3B592969582 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		46FBBA2D83CC7A273D094AC0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		9EA62F07731A320137348D6C /* MoonPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhase.swift; sourceTree = "<group>"; };
 		A6F61C5782523A0AD95D9A31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEEBF6C8698D306D8CB9B7EA /* ShutOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
+		DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ender.swift; sourceTree = "<group>"; };
+		E6700D56F0EFF72EF793A396 /* ShutOff-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "ShutOff-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutOffApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		6D1884662467AF9F933DCB33 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */,
+				9EA62F07731A320137348D6C /* MoonPhase.swift */,
+				ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */,
+				46FBBA2D83CC7A273D094AC0 /* TimerView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		7D3F1C8D6A459D92F7656B8B = {
 			isa = PBXGroup;
 			children = (
+				D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */,
 				A6F61C5782523A0AD95D9A31 /* Assets.xcassets */,
-				72E60B63ED09A3B592969582 /* main.swift */,
+				6D1884662467AF9F933DCB33 /* Sources */,
 				9C757240708A09A9FD240F34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -30,6 +55,7 @@
 		9C757240708A09A9FD240F34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				E6700D56F0EFF72EF793A396 /* ShutOff-iOS.app */,
 				AEEBF6C8698D306D8CB9B7EA /* ShutOff.app */,
 			);
 			name = Products;
@@ -38,6 +64,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		513589D50A7C2B3879A78C9E /* ShutOff-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9EEDAB578BF3F84B00481017 /* Build configuration list for PBXNativeTarget "ShutOff-iOS" */;
+			buildPhases = (
+				7CAF78E278624AB48AF8486F /* Sources */,
+				75DFC3BE299561EB5F209BEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ShutOff-iOS";
+			packageProductDependencies = (
+			);
+			productName = "ShutOff-iOS";
+			productReference = E6700D56F0EFF72EF793A396 /* ShutOff-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		567FB192ACACB72C553FCF82 /* ShutOff */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2A53F0BB520211685FE8C35F /* Build configuration list for PBXNativeTarget "ShutOff" */;
@@ -65,6 +109,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					513589D50A7C2B3879A78C9E = {
+						DevelopmentTeam = 6272CRNH9G;
+						ProvisioningStyle = Automatic;
+					};
 					567FB192ACACB72C553FCF82 = {
 						DevelopmentTeam = 6272CRNH9G;
 						ProvisioningStyle = Automatic;
@@ -86,11 +134,20 @@
 			projectRoot = "";
 			targets = (
 				567FB192ACACB72C553FCF82 /* ShutOff */,
+				513589D50A7C2B3879A78C9E /* ShutOff-iOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		75DFC3BE299561EB5F209BEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED006628CF63C04562899BA3 /* Assets-iOS.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D02930E8A3874FA0CB412E74 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,7 +163,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6BC55AD8750B8B531B155564 /* main.swift in Sources */,
+				7A06C676B0DBB36EF33F3876 /* Ender.swift in Sources */,
+				B89894972C5946BD6BF29DF0 /* MoonPhase.swift in Sources */,
+				EDB4B1CCDA4F45375F4F9A73 /* ShutOffApp.swift in Sources */,
+				70ABA3D86E4FCED562434E34 /* TimerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CAF78E278624AB48AF8486F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F826A50B92CDB3E29D5A0320 /* Ender.swift in Sources */,
+				414D4F634A74BD2B22188FF6 /* MoonPhase.swift in Sources */,
+				C152EDE8579A8591A80324FE /* ShutOffApp.swift in Sources */,
+				3BD1D36B7D5CB9C5EB7C18CC /* TimerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +233,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -186,11 +256,59 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-parse-as-library";
 				PRODUCT_BUNDLE_IDENTIFIER = studio.nickson.shutoff;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
+		};
+		A143CBE70FB0BE71BE8E107C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6272CRNH9G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Info-iOS.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nickson.shutoff;
+				PRODUCT_NAME = ShutOff;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ABBB93CF475413635CF19AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6272CRNH9G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Info-iOS.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nickson.shutoff;
+				PRODUCT_NAME = ShutOff;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
 		};
 		B731B3DB815728A34A734772 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -248,7 +366,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -272,9 +389,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_SWIFT_FLAGS = "-parse-as-library";
 				PRODUCT_BUNDLE_IDENTIFIER = studio.nickson.shutoff;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -286,6 +403,15 @@
 			buildConfigurations = (
 				2BE0FA4AF1A1013282E89ADB /* Debug */,
 				F9D38E683075D0FAF06AE60A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9EEDAB578BF3F84B00481017 /* Build configuration list for PBXNativeTarget "ShutOff-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A143CBE70FB0BE71BE8E107C /* Debug */,
+				ABBB93CF475413635CF19AE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
