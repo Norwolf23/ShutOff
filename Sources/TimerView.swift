@@ -1,14 +1,8 @@
 import SwiftUI
 
-let presets = [15, 30, 45, 60, 90, 120]
-
 struct TimerView: View {
-    @State private var endDate: Date?
-    @State private var total: TimeInterval = 1
+    @ObservedObject var model: Countdown
     @State private var customMinutes = 45
-    @State private var now = Date()
-    private let ender = Ender()
-    private let tick = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
 
     var body: some View {
         GeometryReader { g in
@@ -19,7 +13,7 @@ struct TimerView: View {
                 VStack(spacing: 0) {
                     header(s)
                     Spacer(minLength: 24 * s)
-                    if endDate == nil { picker(s) } else { countdown(s) }
+                    if let end = model.endDate { countdown(end, s) } else { picker(s) }
                     Spacer(minLength: 24 * s)
                 }
                 .padding(28 * s)
@@ -32,13 +26,6 @@ struct TimerView: View {
         #endif
         .foregroundStyle(Theme.text)
         .preferredColorScheme(.dark)
-        .onReceive(tick) { t in
-            now = t
-            if let end = endDate, t >= end {
-                endDate = nil
-                ender.fire()
-            }
-        }
     }
 
     func header(_ s: CGFloat) -> some View {
@@ -52,7 +39,7 @@ struct TimerView: View {
 
     func picker(_ s: CGFloat) -> some View {
         VStack(alignment: .leading, spacing: 20 * s) {
-            Button { start(minutes: customMinutes) } label: {
+            Button { model.start(minutes: customMinutes) } label: {
                 MoonView(phase: 0.62)
                     .frame(width: 150 * s)
                     .frame(maxWidth: .infinity)
@@ -60,6 +47,7 @@ struct TimerView: View {
                     .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Start \(customMinutes) minutes")
 
             Text(Ender.promise)
                 .font(.system(size: 13 * s, weight: .light))
@@ -71,8 +59,9 @@ struct TimerView: View {
                     HStack(spacing: 0) {
                         ForEach(0..<3, id: \.self) { col in
                             let m = presets[row * 3 + col]
-                            Button(label(m)) { start(minutes: m) }
+                            Button(presetLabel(m)) { model.start(minutes: m) }
                                 .buttonStyle(Key(s: s))
+                                .accessibilityLabel("Start \(m) minutes")
                             if col < 2 { vrule }
                         }
                     }
@@ -84,26 +73,36 @@ struct TimerView: View {
             HStack(spacing: 0) {
                 Text("Custom").font(.system(size: 13 * s, weight: .light)).foregroundStyle(Theme.dim)
                 Spacer()
-                Button("−") { customMinutes = max(5, customMinutes - 5) }.buttonStyle(Key(s: s, small: true))
+                Button("−") { customMinutes = max(5, customMinutes - 5) }
+                    .buttonStyle(Key(s: s, small: true))
+                    .accessibilityLabel("5 minutes less")
                 Text("\(customMinutes) min")
                     .font(.system(size: 13 * s, weight: .light, design: .monospaced))
                     .frame(width: 64 * s)
-                Button("+") { customMinutes = min(480, customMinutes + 5) }.buttonStyle(Key(s: s, small: true))
+                Button("+") { customMinutes = min(480, customMinutes + 5) }
+                    .buttonStyle(Key(s: s, small: true))
+                    .accessibilityLabel("5 minutes more")
             }
-            Button("Start \(customMinutes) min") { start(minutes: customMinutes) }
+            Button("Start \(customMinutes) min") { model.start(minutes: customMinutes) }
                 .buttonStyle(Key(s: s, accent: true))
+                .keyboardShortcut(.defaultAction)
                 .overlay(alignment: .top) { hrule }
                 .overlay(alignment: .bottom) { hrule }
         }
     }
 
-    func countdown(_ s: CGFloat) -> some View {
+    func countdown(_ end: Date, _ s: CGFloat) -> some View {
         VStack(spacing: 28 * s) {
-            MoonView(phase: 1 - progress)
-                .frame(maxWidth: 180 * s)
-                .animation(.linear(duration: 0.5), value: progress)
+            // Only the moon needs a clock; the digits count down on their own.
+            TimelineView(.periodic(from: .now, by: 1)) { tl in
+                let p = model.progress(at: tl.date)
+                MoonView(phase: 1 - p)
+                    .frame(maxWidth: 180 * s)
+                    .animation(.linear(duration: 1), value: p)
+            }
             VStack(spacing: 6 * s) {
-                Text(timeString)
+                Text(timerInterval: min(.now, end)...end, countsDown: true)
+                    .monospacedDigit()
                     .font(.system(size: 46 * s, weight: .ultraLight, design: .monospaced))
                 Text(Ender.until)
                     .font(.system(size: 11 * s))
@@ -111,14 +110,12 @@ struct TimerView: View {
             }
 
             HStack(spacing: 0) {
-                Button("+10 min") {
-                    endDate = endDate?.addingTimeInterval(600)
-                    total += 600
-                }
-                .buttonStyle(Key(s: s))
-                vrule
-                Button("Cancel") { stop() }
+                Button("+10 min") { model.extend() }
                     .buttonStyle(Key(s: s))
+                vrule
+                Button("Cancel") { model.stop() }
+                    .buttonStyle(Key(s: s))
+                    .keyboardShortcut(.cancelAction)
             }
             .fixedSize(horizontal: false, vertical: true)
             .overlay(alignment: .top) { hrule }
@@ -128,30 +125,6 @@ struct TimerView: View {
 
     var hrule: some View { Rectangle().fill(Theme.rule).frame(height: 1) }
     var vrule: some View { Rectangle().fill(Theme.rule).frame(width: 1) }
-
-    var remaining: TimeInterval { max(0, endDate?.timeIntervalSince(now) ?? 0) }
-    var progress: Double { total > 0 ? remaining / total : 0 }
-
-    var timeString: String {
-        let r = Int(remaining.rounded())
-        let h = r / 3600, m = (r % 3600) / 60, s = r % 60
-        return h > 0 ? String(format: "%d:%02d:%02d", h, m, s) : String(format: "%02d:%02d", m, s)
-    }
-
-    func label(_ m: Int) -> String {
-        m < 60 ? "\(m)m" : m % 60 == 0 ? "\(m / 60)h" : String(format: "%gh", Double(m) / 60)
-    }
-
-    func start(minutes: Int) {
-        total = TimeInterval(minutes * 60)
-        endDate = Date().addingTimeInterval(total)
-        ender.begin()
-    }
-
-    func stop() {
-        endDate = nil
-        ender.cancel()
-    }
 }
 
 /// Plain text key: no fill, no border. Dividers come from the parent.
