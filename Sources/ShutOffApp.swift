@@ -2,17 +2,55 @@ import SwiftUI
 
 @main
 struct ShutOffApp: App {
+    @StateObject private var model = Countdown.shared
+
     var body: some Scene {
-        WindowGroup {
-            TimerView()
-        }
         #if os(macOS)
-        .windowStyle(.hiddenTitleBar)
-        .windowResizability(.contentMinSize)
-        .defaultSize(width: 300, height: 500)
+        // One window, not a group: Cmd+N can't spawn a second timer, and closing it keeps the countdown alive.
+        Window("ShutOff", id: "main") { TimerView(model: model) }
+            .windowStyle(.hiddenTitleBar)
+            .windowResizability(.contentMinSize)
+            .defaultSize(width: 300, height: 500)
+        MenuBarExtra { MenuBarMenu(model: model) } label: { MenuBarLabel(model: model) }
+        #else
+        WindowGroup { TimerView(model: model) }
         #endif
     }
 }
+
+#if os(macOS)
+struct MenuBarLabel: View {
+    @ObservedObject var model: Countdown
+    var body: some View {
+        if let end = model.endDate {
+            Label { Text(timerInterval: min(.now, end)...end, countsDown: true).monospacedDigit() }
+                icon: { Image(systemName: "moon.fill") }
+                .labelStyle(.titleAndIcon)
+        } else {
+            Image(systemName: "moon")
+        }
+    }
+}
+
+struct MenuBarMenu: View {
+    @ObservedObject var model: Countdown
+    @Environment(\.openWindow) private var openWindow
+    var body: some View {
+        if let end = model.endDate {
+            Text("Sleep at \(end, style: .time)")
+            Button("+10 min") { model.extend() }
+            Button("Cancel") { model.stop() }
+        } else {
+            ForEach(presets, id: \.self) { m in
+                Button("Sleep in \(presetLabel(m))") { model.start(minutes: m) }
+            }
+        }
+        Divider()
+        Button("Open ShutOff") { openWindow(id: "main"); NSApp.activate(ignoringOtherApps: true) }
+        Button("Quit") { NSApp.terminate(nil) }.keyboardShortcut("q")
+    }
+}
+#endif
 
 enum Theme {
     static let night = [Color(red: 0.055, green: 0.070, blue: 0.135),   // #0E1222 top

@@ -7,34 +7,84 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1D11094C7E8A44072633D8 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A2C79FA378CDC7D0FAC7B /* Countdown.swift */; };
+		22620D76D463C08872BFFC47 /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3DB7D1372958669003D9A /* Intent.swift */; };
 		3BD1D36B7D5CB9C5EB7C18CC /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FBBA2D83CC7A273D094AC0 /* TimerView.swift */; };
 		3FAC762C42ACC7C0539DD6E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F61C5782523A0AD95D9A31 /* Assets.xcassets */; };
 		414D4F634A74BD2B22188FF6 /* MoonPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA62F07731A320137348D6C /* MoonPhase.swift */; };
+		431F32F818AFCDCE7C84BDD5 /* CountdownAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6731877156C97B03808ABC72 /* CountdownAttributes.swift */; };
+		6966F95ADE575FB45EE46A3B /* ShutOffWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A248DF155D2D3E1C611775 /* ShutOffWidgets.swift */; };
 		70ABA3D86E4FCED562434E34 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FBBA2D83CC7A273D094AC0 /* TimerView.swift */; };
+		70FC68E57A1658491CEF60EB /* Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3DB7D1372958669003D9A /* Intent.swift */; };
+		784A75BD8307CDFAA94F879D /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A2C79FA378CDC7D0FAC7B /* Countdown.swift */; };
 		7A06C676B0DBB36EF33F3876 /* Ender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */; };
+		A2BC53C28B28B741FDA18DFC /* ShutOffWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 861818FA07B5E73EFB8659FF /* ShutOffWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B89894972C5946BD6BF29DF0 /* MoonPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA62F07731A320137348D6C /* MoonPhase.swift */; };
 		C152EDE8579A8591A80324FE /* ShutOffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */; };
 		ED006628CF63C04562899BA3 /* Assets-iOS.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */; };
 		EDB4B1CCDA4F45375F4F9A73 /* ShutOffApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */; };
 		F826A50B92CDB3E29D5A0320 /* Ender.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */; };
+		FBDABAB3FAA2786EC88DDD49 /* CountdownAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6731877156C97B03808ABC72 /* CountdownAttributes.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3A329D479F78622775A2673A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D8513AB15DDD614F43AB014B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 085BE546732E58E9EA67662F;
+			remoteInfo = ShutOffWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		180C5AB50F22996298B0D304 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A2BC53C28B28B741FDA18DFC /* ShutOffWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		46FBBA2D83CC7A273D094AC0 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		4D3A2C79FA378CDC7D0FAC7B /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		6731877156C97B03808ABC72 /* CountdownAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownAttributes.swift; sourceTree = "<group>"; };
+		76A248DF155D2D3E1C611775 /* ShutOffWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutOffWidgets.swift; sourceTree = "<group>"; };
+		861818FA07B5E73EFB8659FF /* ShutOffWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ShutOffWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA62F07731A320137348D6C /* MoonPhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhase.swift; sourceTree = "<group>"; };
 		A6F61C5782523A0AD95D9A31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEEBF6C8698D306D8CB9B7EA /* ShutOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShutOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B817FA7FAFF1E83398FCB077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets-iOS.xcassets"; sourceTree = "<group>"; };
 		DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ender.swift; sourceTree = "<group>"; };
 		E6700D56F0EFF72EF793A396 /* ShutOff-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "ShutOff-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShutOffApp.swift; sourceTree = "<group>"; };
+		F4E3DB7D1372958669003D9A /* Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		6698EBED0D82B3176FFF6483 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				6731877156C97B03808ABC72 /* CountdownAttributes.swift */,
+				B817FA7FAFF1E83398FCB077 /* Info.plist */,
+				76A248DF155D2D3E1C611775 /* ShutOffWidgets.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		6D1884662467AF9F933DCB33 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4D3A2C79FA378CDC7D0FAC7B /* Countdown.swift */,
 				DBF4228D0E9849ACAAE4E9C2 /* Ender.swift */,
+				F4E3DB7D1372958669003D9A /* Intent.swift */,
 				9EA62F07731A320137348D6C /* MoonPhase.swift */,
 				ED1102A9A29EDEC2AEF92C49 /* ShutOffApp.swift */,
 				46FBBA2D83CC7A273D094AC0 /* TimerView.swift */,
@@ -48,6 +98,7 @@
 				D0A52A37B34CAA820752025D /* Assets-iOS.xcassets */,
 				A6F61C5782523A0AD95D9A31 /* Assets.xcassets */,
 				6D1884662467AF9F933DCB33 /* Sources */,
+				6698EBED0D82B3176FFF6483 /* Widgets */,
 				9C757240708A09A9FD240F34 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,6 +108,7 @@
 			children = (
 				E6700D56F0EFF72EF793A396 /* ShutOff-iOS.app */,
 				AEEBF6C8698D306D8CB9B7EA /* ShutOff.app */,
+				861818FA07B5E73EFB8659FF /* ShutOffWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,16 +116,35 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		085BE546732E58E9EA67662F /* ShutOffWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 637E915D397FAF967BC3ED30 /* Build configuration list for PBXNativeTarget "ShutOffWidgets" */;
+			buildPhases = (
+				3090A93CCFBDD0523D962560 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShutOffWidgets;
+			packageProductDependencies = (
+			);
+			productName = ShutOffWidgets;
+			productReference = 861818FA07B5E73EFB8659FF /* ShutOffWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		513589D50A7C2B3879A78C9E /* ShutOff-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9EEDAB578BF3F84B00481017 /* Build configuration list for PBXNativeTarget "ShutOff-iOS" */;
 			buildPhases = (
 				7CAF78E278624AB48AF8486F /* Sources */,
 				75DFC3BE299561EB5F209BEB /* Resources */,
+				180C5AB50F22996298B0D304 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6553EE8DD1DB6BA82CAFE268 /* PBXTargetDependency */,
 			);
 			name = "ShutOff-iOS";
 			packageProductDependencies = (
@@ -109,6 +180,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					085BE546732E58E9EA67662F = {
+						DevelopmentTeam = 6272CRNH9G;
+						ProvisioningStyle = Automatic;
+					};
 					513589D50A7C2B3879A78C9E = {
 						DevelopmentTeam = 6272CRNH9G;
 						ProvisioningStyle = Automatic;
@@ -135,6 +210,7 @@
 			targets = (
 				567FB192ACACB72C553FCF82 /* ShutOff */,
 				513589D50A7C2B3879A78C9E /* ShutOff-iOS */,
+				085BE546732E58E9EA67662F /* ShutOffWidgets */,
 			);
 		};
 /* End PBXProject section */
@@ -159,11 +235,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3090A93CCFBDD0523D962560 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				431F32F818AFCDCE7C84BDD5 /* CountdownAttributes.swift in Sources */,
+				6966F95ADE575FB45EE46A3B /* ShutOffWidgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3EC967A3AE861F187FDF56A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1D11094C7E8A44072633D8 /* Countdown.swift in Sources */,
 				7A06C676B0DBB36EF33F3876 /* Ender.swift in Sources */,
+				22620D76D463C08872BFFC47 /* Intent.swift in Sources */,
 				B89894972C5946BD6BF29DF0 /* MoonPhase.swift in Sources */,
 				EDB4B1CCDA4F45375F4F9A73 /* ShutOffApp.swift in Sources */,
 				70ABA3D86E4FCED562434E34 /* TimerView.swift in Sources */,
@@ -174,7 +261,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784A75BD8307CDFAA94F879D /* Countdown.swift in Sources */,
+				FBDABAB3FAA2786EC88DDD49 /* CountdownAttributes.swift in Sources */,
 				F826A50B92CDB3E29D5A0320 /* Ender.swift in Sources */,
+				70FC68E57A1658491CEF60EB /* Intent.swift in Sources */,
 				414D4F634A74BD2B22188FF6 /* MoonPhase.swift in Sources */,
 				C152EDE8579A8591A80324FE /* ShutOffApp.swift in Sources */,
 				3BD1D36B7D5CB9C5EB7C18CC /* TimerView.swift in Sources */,
@@ -182,6 +272,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6553EE8DD1DB6BA82CAFE268 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 085BE546732E58E9EA67662F /* ShutOffWidgets */;
+			targetProxy = 3A329D479F78622775A2673A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		26CFDA94DA22736FDA5A005B /* Release */ = {
@@ -239,6 +337,29 @@
 			};
 			name = Release;
 		};
+		2883F4B5D6F302CBC9C0EEDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6272CRNH9G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nickson.shutoff.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		2BE0FA4AF1A1013282E89ADB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -250,6 +371,7 @@
 				DEVELOPMENT_TEAM = 6272CRNH9G;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -372,6 +494,29 @@
 			};
 			name = Debug;
 		};
+		E0EB2EC915BC9E1EB0FD276D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6272CRNH9G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = studio.nickson.shutoff.widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		F9D38E683075D0FAF06AE60A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -383,6 +528,7 @@
 				DEVELOPMENT_TEAM = 6272CRNH9G;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -403,6 +549,15 @@
 			buildConfigurations = (
 				2BE0FA4AF1A1013282E89ADB /* Debug */,
 				F9D38E683075D0FAF06AE60A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		637E915D397FAF967BC3ED30 /* Build configuration list for PBXNativeTarget "ShutOffWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E0EB2EC915BC9E1EB0FD276D /* Debug */,
+				2883F4B5D6F302CBC9C0EEDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

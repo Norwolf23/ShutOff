@@ -24,14 +24,21 @@ ON THE MAC
 • Puts the whole Mac to sleep when the timer ends, exactly like choosing Sleep from the Apple menu. Video stops, audio stops, the screen goes dark, downloads and open documents are untouched.
 • Nothing is shut down, closed, or lost. Press any key in the morning and everything is where you left it.
 • The timer keeps running while ShutOff is in the background or behind a full-screen video. It holds a small system exemption so macOS never pauses the countdown, and releases it the moment the timer ends or is cancelled.
+• A menu-bar moon shows the time left and lets you start, extend or cancel without opening the window. Close the window and the timer keeps running.
+• The volume fades down over the last half-minute, so a film doesn't cut off mid-line. Your volume comes back when the Mac wakes.
 • Made for falling asleep to a film or a YouTube autoplay chain without it running all night.
 • Resizable window, fullscreen-friendly. Looks as good on a 27" display as in a small corner.
 
 ON THE iPHONE
 • iOS does not let any app lock or sleep the phone, so ShutOff does the thing that matters: it stops the audio. Podcasts, music, YouTube, audiobooks, white noise — whatever is playing stops when the timer ends and stays stopped.
 • Works with every app. ShutOff does not need to be the player; it just tells iOS to hand the audio back.
-• Keeps counting with the screen locked and ShutOff in the background. It stays awake by playing silence, then takes the audio session at zero. Nothing is played through your speaker.
+• A Live Activity counts down on the lock screen and in the Dynamic Island, so you can glance at the time left without unlocking.
+• Keeps counting with the screen locked and ShutOff in the background. It stays awake by playing silence, then takes the audio session at zero. Nothing is played through your speaker. A phone call or Siri won't break the timer.
 • Start it, lock the phone, sleep.
+
+ANYWHERE
+• Ask Siri or run a Shortcut: "Start ShutOff", "Cancel ShutOff".
+• Quit and reopen and a running timer picks up where it left off.
 
 THE MOON
 The countdown is a moon. Full when you start, half when you're halfway, a thin crescent near the end, dark at zero. Soft watercolour surface, thin lines, a night sky. Nothing bright to keep you awake.
@@ -83,11 +90,13 @@ No login, no account, no network, no third-party SDKs. Sandboxed, hardened runti
 ### iOS
 ShutOff is a sleep timer that stops audio playback from other apps when the timer ends. iOS provides no API to lock or sleep the device, so stopping audio is the whole feature, and the listing says so.
 
-Background audio mode is declared (`UIBackgroundModes: audio`). While a timer is running the app plays a silent, in-memory audio loop with the `.mixWithOthers` option so the user's music/podcast continues and iOS keeps the app alive with the screen locked. When the timer reaches zero the app re-activates its AVAudioSession as a non-mixable `.playback` session, which causes iOS to interrupt every other app's audio, then deactivates without `notifyOthersOnDeactivation` so the other apps stay paused. The silent track is stopped and the session released; nothing audible is ever produced. Cancelling a timer releases the session and lets other audio continue.
+Background audio mode is declared (`UIBackgroundModes: audio`). While a timer is running the app plays a silent, in-memory audio loop with the `.mixWithOthers` option so the user's music/podcast continues and iOS keeps the app alive with the screen locked. When the timer reaches zero the app re-activates its AVAudioSession as a non-mixable `.playback` session, which causes iOS to interrupt every other app's audio, then deactivates without `notifyOthersOnDeactivation` so the other apps stay paused. The silent track is stopped and the session released; nothing audible is ever produced. Cancelling a timer releases the session and lets other audio continue. If a phone call or Siri interrupts the silent loop, the app restarts it when the interruption ends so the timer survives.
 
-To test: play music in Apple Music or Spotify, open ShutOff, set a 5-minute timer, lock the phone. At zero the music stops.
+The app shows a Live Activity (lock screen + Dynamic Island) counting down to zero, via an embedded WidgetKit extension (`studio.nickson.shutoff.widgets`). The activity displays only the remaining time; it collects nothing.
 
-No login, no account, no network, no notifications, no third-party SDKs.
+To test: play music in Apple Music or Spotify, open ShutOff, set a 5-minute timer, lock the phone. At zero the music stops. The remaining time is visible on the lock screen while it counts down.
+
+No login, no account, no network, no notifications (Live Activities are local, not push), no third-party SDKs.
 
 ## Screenshots to capture
 Mac (1280×800 and 2560×1600, from the app window on a plain desktop):
