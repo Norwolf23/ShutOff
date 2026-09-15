@@ -22,14 +22,20 @@ struct ShutOffApp: App {
 struct MenuBarLabel: View {
     @ObservedObject var model: Countdown
     var body: some View {
-        if let end = model.endDate {
-            Label { Text(timerInterval: min(.now, end)...end, countsDown: true).monospacedDigit() }
+        if model.endDate != nil {
+            Label { Text(clock(model.remaining)).monospacedDigit() }
                 icon: { Image(systemName: "moon.fill") }
                 .labelStyle(.titleAndIcon)
         } else {
             Image(systemName: "moon")
         }
     }
+}
+
+/// h:mm:ss or m:ss. Plain text on purpose: Text(timerInterval:) inside a MenuBarExtra label
+/// re-renders the status item forever (100% CPU, +200 MB/s) on macOS 26.
+func clock(_ s: TimeInterval) -> String {
+    Duration.seconds(s).formatted(.time(pattern: s >= 3600 ? .hourMinuteSecond : .minuteSecond))
 }
 
 struct MenuBarMenu: View {

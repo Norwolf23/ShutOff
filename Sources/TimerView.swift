@@ -94,11 +94,12 @@ struct TimerView: View {
     func countdown(_ end: Date, _ s: CGFloat) -> some View {
         VStack(spacing: 28 * s) {
             // Only the moon needs a clock; the digits count down on their own.
+            // ponytail: no per-frame animation. A 1 s tween re-armed every second kept the blurred
+            // Canvas re-rasterizing at 120 fps for the whole countdown (~15% CPU). One step a second is invisible.
             TimelineView(.periodic(from: .now, by: 1)) { tl in
                 let p = model.progress(at: tl.date)
                 MoonView(phase: 1 - p)
                     .frame(maxWidth: 180 * s)
-                    .animation(.linear(duration: 1), value: p)
             }
             VStack(spacing: 6 * s) {
                 Text(timerInterval: min(.now, end)...end, countsDown: true)
